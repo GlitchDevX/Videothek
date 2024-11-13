@@ -27,7 +27,7 @@ class MovieRepositoryMongoDb (
     override fun removeMovie(id: UUID): Boolean {
         val query = Query(Criteria.where("id").`is`(id))
         val result = mongoTemplate.remove(query, MOVIE_CLASS);
-        return result.wasAcknowledged();
+        return result.deletedCount >= 1;
     }
 
     override fun updateMovie(movie: Movie) {
