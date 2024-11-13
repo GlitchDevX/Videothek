@@ -1,5 +1,5 @@
 package de.otto.springboottutorium.dto.response
 
-import java.util.UUID
+import java.util.*
 
 data class IdsResponse(val id: List<UUID>) : OpenResponse()

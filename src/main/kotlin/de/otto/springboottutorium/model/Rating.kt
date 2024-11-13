@@ -1,6 +1,6 @@
 package de.otto.springboottutorium.model
 
-import java.util.UUID
+import java.util.*
 
 data class Rating(
     val id: UUID,

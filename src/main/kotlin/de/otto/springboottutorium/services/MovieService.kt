@@ -3,11 +3,14 @@ package de.otto.springboottutorium.services
 import de.otto.springboottutorium.dto.request.MovieRequest
 import de.otto.springboottutorium.exceptions.NotFoundException
 import de.otto.springboottutorium.exceptions.NotFreeException
-import de.otto.springboottutorium.model.*
+import de.otto.springboottutorium.model.Filter
+import de.otto.springboottutorium.model.LendStatus
+import de.otto.springboottutorium.model.Movie
+import de.otto.springboottutorium.model.Sort
 import de.otto.springboottutorium.repositories.MovieRepository
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
-import java.util.UUID
+import java.util.*
 
 @Service
 class MovieService (

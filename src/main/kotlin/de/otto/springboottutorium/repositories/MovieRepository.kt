@@ -2,7 +2,7 @@ package de.otto.springboottutorium.repositories
 
 import de.otto.springboottutorium.model.Movie
 import org.springframework.data.mongodb.core.query.Query
-import java.util.UUID
+import java.util.*
 
 interface MovieRepository {
     // high authorization endpoints

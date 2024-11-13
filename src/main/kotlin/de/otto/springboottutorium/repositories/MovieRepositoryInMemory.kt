@@ -3,7 +3,7 @@ package de.otto.springboottutorium.repositories
 import de.otto.springboottutorium.model.Movie
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.stereotype.Repository
-import java.util.UUID
+import java.util.*
 
 @Repository
 class MovieRepositoryInMemory : MovieRepository {
