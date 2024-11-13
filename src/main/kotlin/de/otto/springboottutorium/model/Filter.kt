@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull
 
 data class Filter (
     @NotNull
-    val filterType: FilterType,
+    val filterType: FilterType?,
+
     val filterValue: String?,
 )

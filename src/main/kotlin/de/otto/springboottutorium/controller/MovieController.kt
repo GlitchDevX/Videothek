@@ -4,11 +4,9 @@ import de.otto.springboottutorium.dto.request.IdMovieRequest
 import de.otto.springboottutorium.dto.request.MovieRequest
 import de.otto.springboottutorium.dto.request.MoviesRequest
 import de.otto.springboottutorium.dto.response.*
-import de.otto.springboottutorium.exceptions.IllegalArgumentException
 import de.otto.springboottutorium.model.*
 import de.otto.springboottutorium.services.MovieService
 import jakarta.validation.Valid
-import jakarta.validation.Validation
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -49,13 +47,8 @@ class MovieController (private val movieService: MovieService) {
         @Valid @RequestParam("sortDirection") sortDirection: SortDirection?
     ): ResponseEntity<MoviesResponse> {
         val sort = Sort(sortType, sortDirection);
-        val filterList = filters?.map { f -> Filter(FilterType.valueOf(f.split(":")[0]), f.split(":").getOrNull(1)) } ?: listOf();
-        val validations = Validation.buildDefaultValidatorFactory().validator.validate(filterList);
-        if (validations.isNotEmpty()) {
-            throw IllegalArgumentException(validations.joinToString { it.message });
-        }
 
-        val allMovies = movieService.getAllMovies(filterList, sort);
+        val allMovies = movieService.getAllMovies(filters, sort);
         return ResponseEntity(MoviesResponse(allMovies), HttpStatus.OK);
     }
 

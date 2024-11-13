@@ -17,8 +17,8 @@ class MovieRepositoryInMemory : MovieRepository {
         movies[movie.id] = movie;
     }
 
-    override fun removeMovie(id: UUID) {
-        movies.remove(id);
+    override fun removeMovie(id: UUID): Boolean {
+        return movies.remove(id) != null;
     }
 
     override fun updateMovie(movie: Movie) {

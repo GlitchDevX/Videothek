@@ -24,9 +24,10 @@ class MovieRepositoryMongoDb (
         mongoTemplate.insert(movie.toDbMovie());
     }
 
-    override fun removeMovie(id: UUID) {
+    override fun removeMovie(id: UUID): Boolean {
         val query = Query(Criteria.where("id").`is`(id))
-        mongoTemplate.remove(query, MOVIE_CLASS);
+        val result = mongoTemplate.remove(query, MOVIE_CLASS);
+        return result.wasAcknowledged();
     }
 
     override fun updateMovie(movie: Movie) {

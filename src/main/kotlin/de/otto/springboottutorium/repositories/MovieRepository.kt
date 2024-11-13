@@ -8,7 +8,7 @@ interface MovieRepository {
     // high authorization endpoints
     fun addMovies(movies: List<Movie>)
     fun addMovie(movie: Movie);
-    fun removeMovie(id: UUID);
+    fun removeMovie(id: UUID): Boolean;
     fun updateMovie(movie: Movie);
 
     // unauthorized endpoints
