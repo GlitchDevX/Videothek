@@ -19,9 +19,11 @@ repositories {
 }
 
 dependencies {
-	implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	compileOnly("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
+	implementation("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
+
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+	implementation("org.springframework.boot:spring-boot-starter-freemarker")
 
 //	implementation("org.springframework.boot:spring-boot-starter-security")
 //	testImplementation("org.springframework.security:spring-security-test")

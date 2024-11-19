@@ -1,0 +1,44 @@
+.movie-block-wrapper {
+    background-color: #9eb2dd;
+    border-radius: 15px;
+    padding: 10px;
+}
+.movie-block-title-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+.movie-block-title {
+    font-weight: bolder;
+    font-size: large;
+    text-decoration: none;
+    color: #000;
+}
+.movie-block-description {
+    margin: 5px 0 0;
+}
+.movie-block-genre {
+    padding: 2px 4px;
+    background: rgba(0, 60, 255, 0.38);
+    color: #003198;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.movie-block-length {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    background: rgba(0, 0, 0, 0.18);
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+.movie-block-length > img {
+    height: 18px;
+}
+.movie-block-year {
+
+}

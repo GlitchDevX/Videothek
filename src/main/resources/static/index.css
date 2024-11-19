@@ -1,0 +1,18 @@
+* {
+    font-family: Poppins;
+}
+body {
+    margin: 0;
+}
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-wrapper {
+    padding: 20px;
+    width: 740px;
+}
+.page-title {
+    margin-block: 0 5px;
+}

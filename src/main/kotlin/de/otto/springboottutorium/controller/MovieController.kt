@@ -8,12 +8,13 @@ import de.otto.springboottutorium.model.*
 import de.otto.springboottutorium.services.MovieService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-@RequestMapping("movie")
+@RequestMapping("movie", consumes = [MediaType.APPLICATION_JSON_VALUE], produces = [MediaType.APPLICATION_JSON_VALUE])
 class MovieController (private val movieService: MovieService) {
 
     @PostMapping("/addMultiple")
