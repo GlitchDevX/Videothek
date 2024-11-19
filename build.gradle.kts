@@ -23,6 +23,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	compileOnly("jakarta.ws.rs:jakarta.ws.rs-api:3.1.0")
 
+	implementation("io.github.microutils:kotlin-logging-jvm")
+
 //	implementation("org.springframework.boot:spring-boot-starter-security")
 //	testImplementation("org.springframework.security:spring-security-test")
 
