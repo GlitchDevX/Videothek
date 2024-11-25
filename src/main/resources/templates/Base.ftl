@@ -14,7 +14,7 @@
         <title>Bit Buster</title>
     </head>
     <body>
-        <#include "Header.ftl">
+        <#include "components/Header.ftl">
         <div class="page-container">
             <div class="page-wrapper">
                 <#nested>

@@ -1,5 +1,14 @@
+/* Blockbuster colors:
+- Yellow: https://www.color-hex.com/color-palette/1041958
+- Blue: https://www.color-hex.com/color-palette/1041960
+*/
 * {
-    font-family: Poppins;
+    font-family: Poppins , sans-serif;
+
+    --t-yellow: #ffa900;
+    --t-yellow-h: #d18c00;
+    --t-blue: #0d3fa9;
+    --t-blue-h: #0b3693;
 }
 body {
     margin: 0;

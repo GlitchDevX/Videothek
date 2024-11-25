@@ -1,15 +1,22 @@
 package de.otto.springboottutorium.controller
 
 import de.otto.springboottutorium.model.*
+import de.otto.springboottutorium.services.MovieHelper
 import de.otto.springboottutorium.services.MovieService
+import jakarta.servlet.http.HttpServletResponse
 import jakarta.validation.Valid
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
-import java.util.*
+import java.util.UUID
 
 @Controller
 @RequestMapping(produces = [MediaType.TEXT_HTML_VALUE])
@@ -18,7 +25,7 @@ class MovieUiController (
 ) {
 
     @GetMapping("/allMovies")
-    fun test(model: Model,
+    fun getAllMovies(model: Model,
              @Valid @RequestParam("filters") filters: Array<String>?,
              @Valid @RequestParam("sort") sortType: SortType?,
              @Valid @RequestParam("sortDirection") sortDirection: SortDirection?
@@ -28,6 +35,49 @@ class MovieUiController (
         val allMovies = movieService.getAllMovies(filters, sort);
         model.addAttribute("allMovies", allMovies);
 
+        model.addAttribute("sort", sort);
+        model.addAttribute("sortTypes", SortType.entries.toTypedArray());
+        model.addAttribute("genres", allMovies.map { it.genre }.toSet().toList());
+        val joinedFilers = filters?.joinToString(";");
+        model.addAttribute("filters", joinedFilers ?: "");
+
         return "AllMovies";
+    }
+
+    @GetMapping("/movie/{id}")
+    fun getMovie(model: Model, @Valid @PathVariable("id") id: UUID): String {
+        val movie = movieService.getMovieById(id);
+        model.addAttribute("movie", movie);
+        model.addAttribute("action", MovieHelper.getLendAction(movie.lendStatus, movie.id));
+        return "Movie";
+    }
+
+    @PostMapping("/lend/{id}", produces = ["text/plain"])
+    fun lendMovie(@Valid @PathVariable("id") id: UUID): ResponseEntity<Unit> {
+        movieService.lendMovie(id);
+        val responseHeaders = HttpHeaders()
+        responseHeaders.set(HttpHeaders.LOCATION, "/movie/$id")
+        return ResponseEntity(responseHeaders, HttpStatus.FOUND);
+    }
+
+    @PostMapping("/return/{id}", produces = ["text/plain"])
+    fun returnMovie(@Valid @PathVariable("id") id: UUID): ResponseEntity<Unit> {
+        movieService.returnMovie(id);
+        val responseHeaders = HttpHeaders()
+        responseHeaders.set(HttpHeaders.LOCATION, "/movie/$id")
+        return ResponseEntity(responseHeaders, HttpStatus.FOUND);
+    }
+
+    @PostMapping("/search")
+    fun searchMovies(model: Model, @Valid @RequestParam("title") title: String, response: HttpServletResponse): String? {
+        val movies = movieService.searchMovie(title);
+        if (movies.count() == 1) {
+            response.addHeader(HttpHeaders.LOCATION, "/movie/${movies.first().id}")
+            response.status = HttpStatus.FOUND.value();
+            return null;
+        }
+        model.addAttribute("search", title);
+        model.addAttribute("movies", movies);
+        return "SearchResults"
     }
 }

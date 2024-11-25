@@ -7,7 +7,7 @@ import org.springframework.boot.runApplication
 class SpringbootTutoriumApplication
 
 // start db with:
-// docker run -d --name MongoDB_Test -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=Videothek -e MONGO_INITDB_ROOT_PASSWORD=ZpaEVfrd4QBTRgI0bRxbLgjDP7K1w4 mongo
+// docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=Videothek -e MONGO_INITDB_ROOT_PASSWORD=ZpaEVfrd4QBTRgI0bRxbLgjDP7K1w4 mongo
 
 fun main(args: Array<String>) {
 	runApplication<SpringbootTutoriumApplication>(*args)

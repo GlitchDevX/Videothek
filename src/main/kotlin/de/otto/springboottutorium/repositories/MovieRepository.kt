@@ -14,4 +14,5 @@ interface MovieRepository {
     // unauthorized endpoints
     fun getAllMovies(query: Query?): List<Movie>;
     fun getMovie(movieId: UUID): Movie?;
+    fun search(title: String): List<Movie>;
 }

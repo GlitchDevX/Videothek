@@ -32,4 +32,14 @@ class MovieRepositoryInMemory : MovieRepository {
     override fun getMovie(movieId: UUID): Movie? {
         return movies[movieId];
     }
+
+    override fun search(title: String): List<Movie> {
+        val matches: MutableList<Movie> = mutableListOf();
+        movies.values.forEach { m ->
+            if (m.title.contains(title)) {
+                matches.add(m);
+            }
+        }
+        return matches;
+    }
 }

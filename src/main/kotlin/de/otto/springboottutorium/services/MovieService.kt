@@ -83,6 +83,10 @@ class MovieService (
         log.info("Movie with id '{}' was returned", id);
     }
 
+    fun searchMovie(title: String): List<Movie> {
+        return movieRepository.search(title);
+    }
+
     private fun extractFilters(filters: Array<String>?): List<Filter> {
         return filters?.map { f -> Filter(
                 FilterType.entries.find { it.name == f.split(":")[0] },

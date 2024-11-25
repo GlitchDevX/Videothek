@@ -1,14 +1,22 @@
 .movie-block-wrapper {
-    background-color: #9eb2dd;
+    background-color: #cfd9ee;
     border-radius: 15px;
     padding: 10px;
 }
-.movie-block-title-info-wrapper {
+.movie-block-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.movie-block-left-container, .movie-block-right-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
     gap: 8px;
+    align-items: center;
+}
+.movie-block-right-container {
+    justify-content: flex-end;
 }
 .movie-block-title {
     font-weight: bolder;
@@ -25,16 +33,25 @@
     color: #003198;
     border-radius: 6px;
     text-decoration: none;
+    text-wrap: nowrap;
 }
-.movie-block-length {
+.movie-block-genre:hover {
+    background: rgba(0, 37, 158, 0.38);
+}
+.movie-available-wrapper  {
+    background: rgba(48, 255, 0, 0.28);
+}
+.movie-block-length, .movie-available-wrapper {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 4px;
 
-    background: rgba(0, 0, 0, 0.18);
     padding: 2px 4px;
     border-radius: 6px;
+}
+.movie-block-length {
+    background: rgba(0, 0, 0, 0.1);
 }
 .movie-block-length > img {
     height: 18px;

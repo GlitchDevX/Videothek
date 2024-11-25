@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-@RequestMapping("movie", consumes = [MediaType.APPLICATION_JSON_VALUE], produces = [MediaType.APPLICATION_JSON_VALUE])
+@RequestMapping("api", produces = [MediaType.APPLICATION_JSON_VALUE])
 class MovieController (private val movieService: MovieService) {
 
     @PostMapping("/addMultiple")

@@ -3,9 +3,18 @@ package de.otto.springboottutorium.services
 import de.otto.springboottutorium.model.*
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
+import java.util.UUID
 
 class MovieHelper {
     companion object {
+        fun getLendAction(lendStatus: LendStatus, movieId: UUID): LendAction {
+            return when (lendStatus) {
+                LendStatus.Free -> LendAction("Lend", "/lend/$movieId");
+                LendStatus.Taken -> LendAction("Return", "/return/$movieId");
+                LendStatus.Reserved -> LendAction("Free", "/return/$movieId");
+            }
+        }
+
         fun generateFilterQuery(filters: List<Filter>): Query {
             val query = Query()
             filters.forEach { f ->

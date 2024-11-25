@@ -41,4 +41,9 @@ class MovieRepositoryMongoDb (
     override fun getMovie(movieId: UUID): Movie? {
         return mongoTemplate.findById(movieId, MOVIE_CLASS)?.toMovie();
     }
+
+    override fun search(title: String): List<Movie> {
+        val query = Query(Criteria.where("title").regex(title))
+        return mongoTemplate.find(query, MOVIE_CLASS).map { m -> m.toMovie() };
+    }
 }
