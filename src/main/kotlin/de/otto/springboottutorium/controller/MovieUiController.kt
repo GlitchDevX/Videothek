@@ -35,12 +35,6 @@ class MovieUiController (
         val allMovies = movieService.getAllMovies(filters, sort);
         model.addAttribute("allMovies", allMovies);
 
-        model.addAttribute("sort", sort);
-        model.addAttribute("sortTypes", SortType.entries.toTypedArray());
-        model.addAttribute("genres", allMovies.map { it.genre }.toSet().toList());
-        val joinedFilers = filters?.joinToString(";");
-        model.addAttribute("filters", joinedFilers ?: "");
-
         return "AllMovies";
     }
 
