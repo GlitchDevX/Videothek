@@ -2,6 +2,11 @@
     <a href="/" class="logo-wrapper">
         <span class="first-logo-part">Bit</span>
         <span class="second-logo-part">Buster</span>
+        <#if environment == "dev">
+        <span class="environment-logo-notice">
+            Develop
+        </span>
+        </#if>
     </a>
     <div class="header-link-search-wrapper">
         <a href="/allMovies" class="header-link">All Movies</a>
@@ -31,6 +36,17 @@
 }
 .second-logo-part {
     color: #fff;
+}
+.environment-logo-notice {
+    color: white;
+    background: var(--t-yellow);
+
+    padding: 0 10px;
+    margin-left: 8px;
+    margin-top: 4px;
+    border-radius: 20px;
+
+    font-size: medium;
 }
 .header-link-search-wrapper {
     display: flex;
