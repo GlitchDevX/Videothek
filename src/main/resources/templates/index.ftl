@@ -9,4 +9,6 @@
     <a href="/allMovies">
         See all Movies
     </a>
+    <br>
+    <img src="https://i.redd.it/kjobc9i7byxd1.jpeg" width="100%">
 </@base.layout>
