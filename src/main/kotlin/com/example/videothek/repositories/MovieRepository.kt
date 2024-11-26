@@ -12,7 +12,7 @@ interface MovieRepository {
     fun updateMovie(movie: Movie);
 
     // unauthorized endpoints
-    fun getAllMovies(query: Query?): List<Movie>;
+    fun getAllMovies(limit: Int, query: Query?): List<Movie>;
     fun getMovie(movieId: UUID): Movie?;
     fun search(title: String): List<Movie>;
 }

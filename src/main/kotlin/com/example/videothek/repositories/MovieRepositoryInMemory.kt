@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-class MovieRepositoryInMemory : com.example.videothek.repositories.MovieRepository {
+class MovieRepositoryInMemory : MovieRepository {
     var movies : MutableMap<UUID, Movie> = mutableMapOf();
 
     override fun addMovies(movies: List<Movie>) {
@@ -25,8 +25,8 @@ class MovieRepositoryInMemory : com.example.videothek.repositories.MovieReposito
         movies[movie.id] = movie;
     }
 
-    override fun getAllMovies(query: Query?): List<Movie> {
-        return movies.values.toList();
+    override fun getAllMovies(limit: Int, query: Query?): List<Movie> {
+        return movies.values.toList().slice(IntRange(0, limit));
     }
 
     override fun getMovie(movieId: UUID): Movie? {

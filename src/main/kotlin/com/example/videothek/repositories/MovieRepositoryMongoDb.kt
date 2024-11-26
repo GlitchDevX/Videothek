@@ -13,7 +13,7 @@ import java.util.*
 class MovieRepositoryMongoDb (
     @Autowired
     private val mongoTemplate: MongoTemplate
-) : com.example.videothek.repositories.MovieRepository {
+) : MovieRepository {
     private val MOVIE_CLASS = DbMovie::class.java;
 
     override fun addMovies(movies: List<Movie>) {
@@ -34,8 +34,10 @@ class MovieRepositoryMongoDb (
         mongoTemplate.save(movie.toDbMovie());
     }
 
-    override fun getAllMovies(query: Query?): List<Movie> {
-        return mongoTemplate.find(query ?: Query(), MOVIE_CLASS).map { m -> m.toMovie() };
+    override fun getAllMovies(limit: Int, query: Query?): List<Movie> {
+        val mappedQuery = query ?: Query()
+        mappedQuery.limit(limit);
+        return mongoTemplate.find(mappedQuery, MOVIE_CLASS).map { m -> m.toMovie() };
     }
 
     override fun getMovie(movieId: UUID): Movie? {

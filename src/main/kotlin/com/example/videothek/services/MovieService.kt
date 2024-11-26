@@ -4,16 +4,20 @@ import com.example.videothek.dto.request.MovieRequest
 import com.example.videothek.exceptions.NotFoundException
 import com.example.videothek.exceptions.NotFreeException
 import com.example.videothek.model.*
+import com.example.videothek.repositories.MovieRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class MovieService (
     @Qualifier("movieRepositoryMongoDb")
-    private val movieRepository: com.example.videothek.repositories.MovieRepository,
+    private val movieRepository: MovieRepository,
+    @Value("\${com.example.videothek.max-movies}")
+    private val maxMovies: Int,
 ) {
     private val log: Logger = LoggerFactory.getLogger(MovieService::class.java)
 
@@ -50,7 +54,7 @@ class MovieService (
         val filterList = extractFilters(filters);
         val query = MovieHelper.generateFilterQuery(filterList);
 
-        val movies = movieRepository.getAllMovies(query);
+        val movies = movieRepository.getAllMovies(maxMovies, query);
         val sortedMovies = MovieHelper.sortMovies(movies, sort);
         log.debug("Get all movies with filters: ({}) and sort ({}).", (filters?.joinToString(", ")), sort.sortType.toString() + ", " + sort.sortDirection.toString());
         return sortedMovies;
