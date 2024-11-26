@@ -1,6 +1,7 @@
 package com.example.videothek.dto.request
 
 import com.example.videothek.model.LendStatus
+import com.example.videothek.validation.annotations.ValidGenre
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Positive
@@ -13,7 +14,7 @@ data class MovieRequest (
     @NotBlank
     val description: String,
 
-    @Size(min = 1, max = 50)
+    @ValidGenre
     val genre: String,
 
     @NotNull
