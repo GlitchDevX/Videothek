@@ -34,7 +34,9 @@ class SecurityConfig {
                         "/",
                         "/search",
                         "/movie/*",
-                        "/allMovies"
+                        "/allMovies",
+                        "/lend/*",
+                        "/return/*"
                     ).permitAll()
 
                     .requestMatchers("/error").permitAll()

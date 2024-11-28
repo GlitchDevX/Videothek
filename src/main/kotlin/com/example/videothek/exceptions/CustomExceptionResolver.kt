@@ -16,7 +16,6 @@ class CustomExceptionResolver {
 
     @ExceptionHandler(ServiceException::class)
     fun handleServiceException(ex: ServiceException, re: WebRequest): Any {
-        println("Handling exception with accept header: " + re.getHeader(HttpHeaders.ACCEPT))
         return if (re.getHeader(HttpHeaders.ACCEPT) != null && re.getHeader(HttpHeaders.ACCEPT)!!.contains(MediaType.TEXT_HTML_VALUE))
             handleServiceExceptionUi(ex);
         else

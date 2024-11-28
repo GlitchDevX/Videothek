@@ -45,19 +45,15 @@ class MovieUiController (
     }
 
     @PostMapping("/lend/{id}", produces = ["text/plain"])
-    fun lendMovie(@Valid @PathVariable("id") id: UUID): ResponseEntity<Unit> {
+    fun lendMovie(@Valid @PathVariable("id") id: UUID): String {
         movieService.lendMovie(id);
-        val responseHeaders = HttpHeaders()
-        responseHeaders.set(HttpHeaders.LOCATION, "/movie/$id")
-        return ResponseEntity(responseHeaders, HttpStatus.FOUND);
+        return "redirect:/movie/$id"
     }
 
     @PostMapping("/return/{id}", produces = ["text/plain"])
-    fun returnMovie(@Valid @PathVariable("id") id: UUID): ResponseEntity<Unit> {
+    fun returnMovie(@Valid @PathVariable("id") id: UUID): String {
         movieService.returnMovie(id);
-        val responseHeaders = HttpHeaders()
-        responseHeaders.set(HttpHeaders.LOCATION, "/movie/$id")
-        return ResponseEntity(responseHeaders, HttpStatus.FOUND);
+        return "redirect:/movie/$id";
     }
 
     @PostMapping("/search")

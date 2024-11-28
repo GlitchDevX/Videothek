@@ -72,7 +72,7 @@ class MovieService (
     fun lendMovie(id: UUID) {
         val movie = getMovieById(id);
         if (movie.lendStatus != LendStatus.Free) {
-            throw NotFreeException("The movie was already been lent.")
+            throw NotFreeException("The movie had already been lent.")
         }
         movie.lendStatus = LendStatus.Taken;
         movieRepository.updateMovie(movie);
