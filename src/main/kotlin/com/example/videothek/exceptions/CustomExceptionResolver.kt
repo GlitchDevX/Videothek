@@ -29,10 +29,11 @@ class CustomExceptionResolver {
         return model;
     }
 
-    @ExceptionHandler(ForbiddenException::class)
-    fun handleForbiddenException(ex: ForbiddenException, model: ModelAndView): ModelAndView {
-        model.addObject("error", ex.message);
-        model.addObject("code", 409);
+    @ExceptionHandler(Exception::class)
+    fun handleForbiddenException(ex: Exception): ModelAndView {
+        val model = ModelAndView("errors/ServiceException")
+        model.addObject("message", ex.message);
+        model.addObject("code", "Unknown Error")
         return model;
     }
 }

@@ -10,6 +10,7 @@
     </a>
     <div class="header-link-search-wrapper">
         <a href="/allMovies" class="header-link">All Movies</a>
+        <a href="/login" class="header-link">Login</a>
         <form action="/search" method="post">
             <input name="title" type="text" class="header-search-box" placeholder="Search a movie">
         </form>
