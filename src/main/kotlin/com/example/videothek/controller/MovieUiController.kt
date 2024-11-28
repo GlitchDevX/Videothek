@@ -1,6 +1,8 @@
 package com.example.videothek.controller
 
-import com.example.videothek.model.*
+import com.example.videothek.model.Sort
+import com.example.videothek.model.SortDirection
+import com.example.videothek.model.SortType
 import com.example.videothek.services.MovieHelper
 import com.example.videothek.services.MovieService
 import jakarta.servlet.http.HttpServletResponse
@@ -11,12 +13,8 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import java.util.UUID
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @Controller
 @RequestMapping(produces = [MediaType.TEXT_HTML_VALUE])
@@ -66,9 +64,10 @@ class MovieUiController (
     fun searchMovies(model: Model, @Valid @RequestParam("title") title: String, response: HttpServletResponse): String? {
         val movies = movieService.searchMovie(title);
         if (movies.count() == 1) {
-            response.addHeader(HttpHeaders.LOCATION, "/movie/${movies.first().id}")
-            response.status = HttpStatus.FOUND.value();
-            return null;
+            return "redirect:/movie/${movies.first().id}";
+//            response.addHeader(HttpHeaders.LOCATION, "/movie/${movies.first().id}")
+//            response.status = HttpStatus.FOUND.value();
+//            return null;
         }
         model.addAttribute("search", title);
         model.addAttribute("movies", movies);

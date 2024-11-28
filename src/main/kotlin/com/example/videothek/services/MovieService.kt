@@ -87,6 +87,7 @@ class MovieService (
     }
 
     fun searchMovie(title: String): List<Movie> {
+        log.info("Search movie(s) with title containing '{}' ", title);
         return movieRepository.search(title);
     }
 
