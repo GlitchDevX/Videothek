@@ -65,9 +65,6 @@ class MovieUiController (
         val movies = movieService.searchMovie(title);
         if (movies.count() == 1) {
             return "redirect:/movie/${movies.first().id}";
-//            response.addHeader(HttpHeaders.LOCATION, "/movie/${movies.first().id}")
-//            response.status = HttpStatus.FOUND.value();
-//            return null;
         }
         model.addAttribute("search", title);
         model.addAttribute("movies", movies);

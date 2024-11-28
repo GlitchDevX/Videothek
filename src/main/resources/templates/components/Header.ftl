@@ -2,7 +2,7 @@
     <a href="/" class="logo-wrapper">
         <span class="first-logo-part">Bit</span>
         <span class="second-logo-part">Buster</span>
-        <#if environment == "dev">
+        <#if environment?? && environment == "dev">
         <span class="environment-logo-notice">
             Develop
         </span>

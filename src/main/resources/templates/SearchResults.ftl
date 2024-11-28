@@ -9,6 +9,11 @@
         <#list movies as movie>
             <@movieBlock.component movie=movie/>
         </#list>
+        <#if movies?size == 0>
+            <span>
+                No Movies found.
+            </span>
+        </#if>
     </div>
 </@base.layout>
 
