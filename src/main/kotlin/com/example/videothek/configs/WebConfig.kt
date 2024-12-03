@@ -1,6 +1,6 @@
 package com.example.videothek.configs
 
-import com.example.videothek.intercepter.RequestInterceptor
+import com.example.videothek.interceptor.RequestInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
