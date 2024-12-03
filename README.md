@@ -27,5 +27,13 @@ To start the API locally, follow these steps:
    ./gradlew bootRun --args='--spring.config.location=file:src/main/resources/application.properties --spring.profiles.active=local'
    ```
 
+## Screenshots
+API Endpoints inside Insomnium
+![API Screenshot](./readme-files/insomnium-screenshot.png)
+
+Web UI Page
+![UI Screenshot](./readme-files/ui-screenshot.png)
+
+
 ### Why the title?
 Videothek is the german word for video library or store.
