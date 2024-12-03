@@ -46,3 +46,7 @@ kotlin {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.bootRun {
+	args = arrayOf("--spring.profiles.active=local").toMutableList()
+}
