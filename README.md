@@ -15,6 +15,7 @@ By default, the project is connected to a `MongoDB` database, but it's easily sw
 - FreeMarker templating engine
 - Configuration & environments
 - Basic Security
+- Caching
 
 ## Local Setup
 To start the API locally, follow these steps:
