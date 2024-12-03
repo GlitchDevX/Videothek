@@ -1,1 +1,1 @@
-rootProject.name = "SpringbootTutorium"
+rootProject.name = "Videothek"

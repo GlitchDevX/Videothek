@@ -1,7 +1,6 @@
 package com.example.videothek.repositories
 
 import com.example.videothek.model.Movie
-import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.mongodb.core.query.Query
 import java.util.*
 
